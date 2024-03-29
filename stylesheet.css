@@ -47,7 +47,7 @@ a {
 
 .content {  display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr 0fr;
   grid-auto-columns: 1fr;
   gap: 2.5vh 5vw;
   grid-auto-flow: row;
@@ -60,6 +60,10 @@ a {
 }
 .Navigation {
   display: grid;
+  height: 10vh;
+  width: 100vw;
+  align-self: center;
+  justify-self: center;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
@@ -281,6 +285,7 @@ a {
 
 .Footer {  display: grid;
   width: 100vw;
+  height: 5vh;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
@@ -290,6 +295,8 @@ a {
   grid-area: Footer;
   grid-template-columns: auto auto auto;
   background: #1C1632;
+  position: relative;
+  bottom: -5vh;
 }
 .Footer a, i {
   display: grid;
