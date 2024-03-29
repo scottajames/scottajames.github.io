@@ -1,0 +1,298 @@
+:root {
+  --black: #252530;
+  --blue: #2C2C37;
+  --grey: #65656A;
+  --white: #FAFAFC;
+  --yellow: #F8C246;
+  --text-size-0: 1.5vmin;
+  --text-size-1: 2vmin;
+  --text-size-2: 2.5vmin;
+  --text-size-3: 3vmin;
+}
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #0F051E;
+}
+h1 {
+  font-size: var(--text-size-3);
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+h2 {
+  font-size: var(--text-size-2);
+  font-family: "Roboto", sans-serif;
+  color: white;
+
+}
+h3 {
+  font-size: var(--text-size-1);
+  font-family: "Roboto", sans-serif;
+  color: white;
+
+}
+p {
+  font-size: var(--text-size-1);
+  font-family: "Roboto", sans-serif;
+  color: white;
+}
+a {
+  font-size: var(--text-size-2);
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  color: white;
+}
+
+.content {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr 0.1fr;
+  grid-auto-columns: 1fr;
+  gap: 2.5vh 5vw;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Navigation Navigation Navigation"
+    "Banner Banner Banner"
+    "Games Games Games"
+    "Links Links Links"
+    "Footer Footer Footer";
+}
+.Navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Logo . Navbar";
+  grid-area: Navigation;
+  background: #1C1632;
+}
+.Logo { grid-area: Logo;
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  margin-left: 2vw; }
+.Logo a {
+  text-decoration: none;
+}
+
+.Navbar { grid-area: Navbar;
+  align-self: center;
+  display: grid;
+  grid-template-columns: auto auto auto auto; }
+.Navbar li {
+  list-style-type: none;
+}
+.Navbar a {
+  text-decoration: none;
+  margin-right: 2vw;
+}
+.Navbar a:hover {
+  opacity: 0.9;
+}
+
+.Banner {  display: grid;
+  grid-template-columns: 0.25fr 2.5fr 0.25fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ". bannerImage .";
+  grid-area: Banner;
+  justify-content: center;
+}
+
+.bannerImage { grid-area: bannerImage;
+  justify-self:center;
+  align-self: center; }
+.bannerImage img {
+  border-radius: 5px;
+  width: 60vw;
+  height: 40vh; }
+
+.Games {  display: grid;
+  grid-template-columns: 0.4fr 0.4fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0vw;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Sports Casino";
+  grid-area: Games;
+  justify-content: space-evenly;
+  align-content: center;
+  margin: 0px 15vw; }
+
+.Sports { grid-area: Sports;
+  border-radius: 5px; 
+  height: 15vh;
+  overflow:hidden;
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  background: #1C1632;
+  background-image: url("1.png");
+  background-repeat:no-repeat;
+  background-position:right;
+  background-size: cover; }
+.Sports h2, p {
+  margin: 1vh 1vw;
+}
+.Sports a {
+  font-size: var(--text-size-1);
+  background: #0F051E;
+  text-align: center;
+  border-bottom: 5px solid #1C1632;
+  border-left: 5px solid #1C1632;
+  border-right: 5px solid #1C1632;
+}
+
+.Casino { grid-area: Casino;
+  border-radius: 5px; 
+  height: 15vh;
+  overflow:hidden;
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  background: #1C1632;
+  background-image: url("2.png");
+  background-repeat:no-repeat;
+  background-position:right;
+  background-size: cover; }
+.Casino h2, p {
+  margin: 1vh 1vw;
+}
+.Casino a {
+  font-size: var(--text-size-1);
+  background: #0F051E;
+  text-align: center;
+  border-bottom: 5px solid #1C1632;
+  border-left: 5px solid #1C1632;
+  border-right: 5px solid #1C1632;
+}
+
+
+.Links {  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  width: 60vw;
+  gap: 0vh 1vw;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Website1"
+    "Website2"
+    "Website3"
+    "Website4"
+    "Website5";
+  grid-area: Links;
+  justify-self:center;
+  align-self: center;
+  background: #1C1632;
+  border-radius: 5px;
+  padding-top: 5vh;
+}
+
+.Website1 { grid-area: Website1;
+  justify-self:center;
+  align-self: center; }
+.Website1 img {
+  width: 12.5vw;
+  border-radius: 5px;
+  max-width: 200px;
+}
+.Website1 a {
+  margin: 0vh 5px;
+}
+.Website1 img:hover {
+  transition: .2s;
+  transform: scale(1.15);
+}
+
+.Website2 { grid-area: Website2;
+  justify-self:center;
+  align-self: center; }
+.Website2 img {
+  width: 12.5vw;
+  border-radius: 5px;
+  max-width: 200px;
+}
+.Website2 a {
+  margin: 0vh 5px;
+}
+.Website2 img:hover {
+  transition: .2s;
+  transform: scale(1.15);
+}
+
+
+.Website3 { grid-area: Website3;
+  justify-self:center;
+  align-self: center; }
+.Website3 img {
+  width: 12.5vw;
+  border-radius: 5px;
+  max-width: 200px;
+}
+.Website3 a {
+  margin: 0vh 5px;
+}
+.Website3 img:hover {
+  transition: .2s;
+  transform: scale(1.15);
+}
+
+
+.Website4 { grid-area: Website4;
+  justify-self:center;
+  align-self: center; }
+.Website4 img {
+  width: 12.5vw;
+  border-radius: 5px;
+  max-width: 200px;
+}
+.Website4 a {
+  margin: 0vh 5px;
+}
+.Website4 img:hover {
+  transition: .2s;
+  transform: scale(1.15);
+}
+
+
+.Website5 { grid-area: Website5;
+  justify-self:center;
+  align-self: center; }
+.Website5 img {
+  width: 12.5vw;
+  border-radius: 5px;
+  max-width: 200px;
+}
+.Website5 a {
+  margin: 0vh 5px;
+}
+.Website5 img:hover {
+  transition: .2s;
+  transform: scale(1.15);
+}
+
+
+
+
+.Footer {  display: grid;
+  width: 100vw;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    ".";
+  grid-area: Footer;
+  grid-template-columns: auto auto auto;
+  background: #1C1632;
+}
+.Footer a, i {
+  display: grid;
+  justify-self:center;
+  align-self: center;
+}
