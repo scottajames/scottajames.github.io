@@ -114,8 +114,7 @@ a {
   align-self: center; }
 .bannerImage img {
   border-radius: 5px;
-  width: 60vw;
-  height: 40vh; }
+  width: 60vw; }
 
 .Games {  grid-area: Games;
   grid-template-columns: 0.3fr 0.3fr;
