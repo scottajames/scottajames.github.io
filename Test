@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Cleaner and Matcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        .match {
+            background-color: #d4edda; /* Light green for matches */
+        }
+        .no-match {
+            background-color: #f8d7da; /* Light red for mismatches */
+        }
+    </style>
+</head>
+<body>
+    <h1>Text Cleaner and Matcher</h1>
+    <h2>Database 1</h2>
+    <textarea id="db1" placeholder="Paste Database 1 here..."></textarea>
+    <h2>Database 2</h2>
+    <textarea id="db2" placeholder="Paste Database 2 here..."></textarea>
+    <button onclick="processText()">Process and Compare</button>
+    <table id="outputTable">
+        <thead>
+            <tr>
+                <th>Database 1</th>
+                <th>Database 2</th>
+                <th>Match Status</th>
+            </tr>
+        </thead>
+        <tbody id="outputBody"></tbody>
+    </table>
+
+    <script>
+        function processText() {
+            // Get input from textareas
+            const db1 = document.getElementById("db1").value;
+            const db2 = document.getElementById("db2").value;
+
+            // Clean Database 1
+            const cleanedDb1 = cleanText(db1).split("\n");
+
+            // Clean Database 2
+            const cleanedDb2 = cleanText(db2).split("\n");
+
+            // Compare the cleaned datasets
+            const matches = compareDatasets(cleanedDb1, cleanedDb2);
+
+            // Display the results in a table
+            displayResults(matches);
+        }
+
+        function cleanText(text) {
+            // Remove specific text patterns
+            text = text.replace(/-NF|-F CT|-F SEC/g, "");
+
+            // Remove repeated words
+            const lines = text.split("\n");
+            const cleanedLines = lines.map(line => {
+                const words = line.split(" ");
+                const uniqueWords = [];
+                for (const word of words) {
+                    if (!uniqueWords.includes(word)) {
+                        uniqueWords.push(word);
+                    }
+                }
+                return uniqueWords.join(" ");
+            });
+            return cleanedLines.join("\n");
+        }
+
+        function compareDatasets(db1, db2) {
+            const matches = [];
+
+            // Find matches and mismatches
+            for (let i = 0; i < Math.max(db1.length, db2.length); i++) {
+                const line1 = db1[i] ? db1[i].trim() : "";
+                const line2 = db2[i] ? db2[i].trim() : "";
+                const isMatch = line1 === line2;
+
+                matches.push({
+                    db1: db1[i] || "", // Preserve original text for display
+                    db2: db2[i] || "", // Preserve original text for display
+                    status: isMatch ? "Match" : "No Match"
+                });
+            }
+
+            // Sort matches to the top
+            matches.sort((a, b) => {
+                if (a.status === "Match" && b.status !== "Match") return -1;
+                if (a.status !== "Match" && b.status === "Match") return 1;
+                return 0;
+            });
+
+            return matches;
+        }
+
+        function displayResults(matches) {
+            const outputBody = document.getElementById("outputBody");
+            outputBody.innerHTML = ""; // Clear previous results
+
+            matches.forEach(match => {
+                const row = document.createElement("tr");
+                row.className = match.status === "Match" ? "match" : "no-match";
+
+                const db1Cell = document.createElement("td");
+                db1Cell.textContent = match.db1;
+                row.appendChild(db1Cell);
+
+                const db2Cell = document.createElement("td");
+                db2Cell.textContent = match.db2;
+                row.appendChild(db2Cell);
+
+                const statusCell = document.createElement("td");
+                statusCell.textContent = match.status;
+                row.appendChild(statusCell);
+
+                outputBody.appendChild(row);
+            });
+        }
+    </script>
+</body>
+</html>
